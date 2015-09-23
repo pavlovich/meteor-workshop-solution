@@ -1,16 +1,25 @@
+
 <head>
   <title>Task Master</title>
 </head>
 
 <body>
   <div class="container tasks">
-    <header class="task-list-header">
-      <h1>Task List</h1>
-    </header>
-    <ul class="task-list">
-      <li class="task-item">Task 1</li>
-      <li class="task-item">Task 2</li>
-      <li class="task-item">Task 3</li>
-    </ul>
+    {{> taskListHeader}}
+    {{> taskList}}
   </div>
 </body>
+
+<template name="taskListHeader">
+  <header class="task-list-header">
+    <h1>Task List</h1>
+  </header>
+</template>
+
+<template name="taskList">
+  <ul class="task-list">
+    <li class="task-item">Task 1</li>
+    <li class="task-item">Task 2</li>
+    <li class="task-item">Task 3</li>
+  </ul>
+</template>
