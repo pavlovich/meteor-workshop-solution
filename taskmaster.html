@@ -18,8 +18,14 @@
 
 <template name="taskList">
   <ul class="task-list">
-    <li class="task-item">Task 1</li>
-    <li class="task-item">Task 2</li>
-    <li class="task-item">Task 3</li>
+    {{#each tasks}}
+      {{> taskItem}}
+    {{/each}}
   </ul>
+</template>
+
+<template name="taskItem">
+  <li class="task-item">
+    {{name}}
+  </li>
 </template>
