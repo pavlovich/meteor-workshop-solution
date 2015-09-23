@@ -1,0 +1,66 @@
+
+@highlight: #D3EFE3;
+@light: #88D4B3;
+@midtone: #41B683;
+@dark: #266A4C;
+@text: #184531;
+@selected: #faffbb;
+@standard-border: @text solid 1px;
+@standard-separator: @midtone solid;
+@element-background: white;
+
+body {
+  position: absolute;
+
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+
+  font-family: sans-serif;
+  font-size: 14px;
+  color: @text;
+
+  background: @dark linear-gradient(to bottom, @dark, @light 100%) fixed;
+
+  .tasks {
+    position: relative;
+
+    margin: 0 auto -10px;
+    padding: 0px;
+
+    width: 90%;
+    max-width: 600px;
+    min-height: 100%;
+
+    background: lighten(@highlight, 8%);
+    border: @standard-border;
+
+    .task-list-header {
+      position: relative;
+      padding: 1px 1px 1px 10px;
+
+      background: linear-gradient(to bottom, @midtone, @light 100%);
+      border-bottom: @standard-separator 2px;
+    }
+
+    .task-list {
+      margin: 0;
+      padding: 0;
+
+      background: @element-background;
+    }
+
+    .task-item {
+      position: relative;
+      box-sizing: content-box;
+      padding: 15px;
+      height: 22px;
+
+      list-style: none;
+
+      background-color: @element-background;
+      border-bottom: @standard-separator 1px;
+    }
+  }
+}
