@@ -28,5 +28,10 @@ Template.taskItem.events({
   "click .can-update": function () {
     Session.set('selectedTask', isSelected(this) ? null : this);
     $('.new-task>input').focus();
-  }
+  },
+  "click .toggle-private": function () {
+    Meteor.call("setPrivate", this._id, !this.private);
+    Session.set('selectedTask', null);
+    return false;
+  },
 });

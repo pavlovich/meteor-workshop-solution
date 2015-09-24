@@ -1,6 +1,15 @@
 <template name="taskItem">
-  <li class="task-item {{#if canUpdate}}can-update{{/if}}{{#if selected}} selected-task{{/if}}">
-    {{name}}
+  <li class="task-item {{#if canUpdate}}can-update{{/if}}{{#if selected}} selected-task{{/if}}{{#if private}} private{{/if}}">
+    {{#if canUpdate}}
+      <button class="toggle-private">
+        {{#if private}}
+          Private
+        {{else}}
+          Public
+        {{/if}}
+      </button>
+    {{/if}}
+    <span class="text">{{name}}</span>
     {{#if email}}
       <span class="email">{{email}}</span>
     {{/if}}

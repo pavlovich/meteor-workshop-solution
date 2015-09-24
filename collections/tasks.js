@@ -1,6 +1,22 @@
 Tasks = new Mongo.Collection("tasks");
 
-if(Meteor.isServer){
+if (Meteor.isClient) {
+  Meteor.subscribe('tasks');
+}
+
+if (Meteor.isServer) {
+
+  Meteor.publish("tasks", function () {
+    return Tasks.find(
+      {
+        $or: [
+          {private: {$ne: true}},
+          {owner: this.userId}
+        ]
+      }
+    );
+  });
+
   var isLoggedInUser = function (id) {
     if (id && _.isString(id)) {
       return true;

@@ -39,5 +39,13 @@ Meteor.methods({
       Tasks.validateInsert(Meteor.userId(), task);
     }
     Tasks.upsert(id, task);
+  },
+  setPrivate: function (id, setToPrivate) {
+    var task = Tasks.findOne(id);
+    if (task.owner && task.owner !== Meteor.userId()) {
+      throw new Meteor.Error("Only the task owner can change privacy settings!");
+    }
+
+    Tasks.update(id, {$set: {private: setToPrivate}});
   }
 });
