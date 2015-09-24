@@ -3,12 +3,16 @@ function isSelected(item) {
   return selected ? selected._id == item._id : false;
 }
 
+function isOwner(item) {
+  return Meteor.userId() && (item.owner == Meteor.userId());
+}
+
 Template.taskItem.helpers({
-  selected: function(){
+  selected: function () {
     return isSelected(this);
   },
   canDelete: function () {
-    return Meteor.userId();
+    return isOwner(this);
   }
 });
 

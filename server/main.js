@@ -18,6 +18,7 @@ var getEmail = function () {
 Meteor.methods({
   addTask: function (task) {
     task.email = getEmail();
+    task.owner = Meteor.userId();
     Tasks.validateInsert(Meteor.userId(), task);
     Tasks.insert(task);
   },
@@ -38,6 +39,7 @@ Meteor.methods({
       Tasks.validateInsert(Meteor.userId(), task);
     }
     task.email = getEmail();
+    task.owner = Meteor.userId();
     Tasks.upsert(id, task);
   }
 });
