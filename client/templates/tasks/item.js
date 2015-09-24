@@ -16,6 +16,9 @@ Template.taskItem.helpers({
   },
   canUpdate: function () {
     return isOwner(this);
+  },
+  canComplete: function () {
+    return !this.private || isOwner(this);
   }
 });
 
@@ -34,4 +37,9 @@ Template.taskItem.events({
     Session.set('selectedTask', null);
     return false;
   },
+  "click .toggle-checked": function () {
+    Meteor.call("setChecked", this._id, !this.checked);
+    Session.set('selectedTask', null);
+    return false;
+  }
 });

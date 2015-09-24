@@ -1,5 +1,8 @@
 <template name="taskItem">
-  <li class="task-item {{#if canUpdate}}can-update{{/if}}{{#if selected}} selected-task{{/if}}{{#if private}} private{{/if}}">
+  <li class="task-item {{#if canUpdate}}can-update{{/if}}{{#if selected}} selected-task{{/if}}{{#if checked}} checked{{/if}}{{#if private}} private{{/if}}">
+    {{#if canComplete}}
+      <input type="checkbox" checked="{{checked}}" class="toggle-checked"/>
+    {{/if}}
     {{#if canUpdate}}
       <button class="toggle-private">
         {{#if private}}

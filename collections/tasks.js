@@ -66,7 +66,19 @@ if (Meteor.isServer) {
               }
             }
           } else {
-            throw new Meteor.Error("You can only update your own tasks!")
+            var keys = _.keys(modifier.$set);
+            if (!task.private) {
+              delete keys.checked;
+            }else{
+              if(keys.indexOf('checked') > -1){
+                throw new Meteor.Error("You can't complete private tasks you don't own.");
+              }
+            }
+            if (keys.length > 0) {
+              throw new Meteor.Error("You can only update your own tasks!");
+            } else {
+              return true;
+            }
           }
         }else {
           throw new Meteor.Error("You must provide a valid Task Identifier!");
