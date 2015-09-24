@@ -49,13 +49,13 @@ if (Meteor.isServer) {
           task = null;
         }
         if (task) {
+          // Cannot update the _id property, so remove it if it is in the 'change set'.
+          delete modifier.$set._id;
+          // This is a strange thing. Angular uses this to keep track of objects in lists.
+          // Mongo doesn't like the property name because it starts with $. But we should
+          // not be adding it anyway as it is polluting our model space. Delete it!
+          delete modifier.$set.$$hashKey;
           if (!task.owner || (task.owner == userId)) {
-            // Cannot update the _id property, so remove it if it is in the 'change set'.
-            delete modifier.$set._id;
-            // This is a strange thing. Angular uses this to keep track of objects in lists.
-            // Mongo doesn't like the property name because it starts with $. But we should
-            // not be adding it anyway as it is polluting our model space. Delete it!
-            delete modifier.$set.$$hashKey;
             if(_.isNull(modifier.$set.name) || modifier.$set.name == undefined) {
               return true;
             }else {
