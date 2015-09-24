@@ -1,5 +1,7 @@
 <template name="newTask">
-  <form class="new-task">
-    <input type="text" name="text" placeholder="{{placeholderText}}" value="{{selectedTaskText}}"/>
-  </form>
+  {{#if currentUser}}
+    <form class="new-task">
+      <input type="text" name="text" placeholder="{{placeholderText}}" value="{{selectedTaskText}}"/>
+    </form>
+  {{/if}}
 </template>

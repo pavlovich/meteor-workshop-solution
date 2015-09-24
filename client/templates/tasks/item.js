@@ -6,6 +6,9 @@ function isSelected(item) {
 Template.taskItem.helpers({
   selected: function(){
     return isSelected(this);
+  },
+  canDelete: function () {
+    return Meteor.userId();
   }
 });
 
