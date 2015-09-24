@@ -20,7 +20,9 @@ if (Meteor.isServer) {
           checked: {$ne: include}
         }
       ]
-    });
+    },
+      {sort: {checked: 1, createdAt: 1}} // note, sorting on client is sufficient. This reduces 'churn'.
+    );
   });
 
   var isLoggedInUser = function (id) {
