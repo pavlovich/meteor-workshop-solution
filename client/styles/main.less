@@ -62,7 +62,11 @@ body {
       background-color: @element-background;
       border-bottom: @standard-separator 1px;
 
-      cursor: pointer;
+      cursor: not-allowed;
+
+      &.can-update {
+        cursor: pointer;
+      }
 
       &.selected-task {
         background-color: @selected !important;

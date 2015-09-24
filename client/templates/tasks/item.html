@@ -1,5 +1,5 @@
 <template name="taskItem">
-  <li class="task-item {{#if selected}}selected-task{{/if}}">
+  <li class="task-item {{#if canUpdate}}can-update{{/if}}{{#if selected}} selected-task{{/if}}">
     {{name}}
     {{#if email}}
       <span class="email">{{email}}</span>
