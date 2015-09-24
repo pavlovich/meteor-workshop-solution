@@ -5,7 +5,7 @@ if(Meteor.isServer){
     if (id && _.isString(id)) {
       return true;
     }
-    return false;
+    throw new Meteor.Error("Try logging in first!");
   };
 
   var isGoodString = function (aString) {
@@ -20,7 +20,7 @@ if(Meteor.isServer){
     if (isLoggedInUser(userId) && hasGoodName(doc)) {
       return true;
     }
-    return false;
+    throw new Meteor.Error("You can't add an empty task!");
   };
 
   Tasks.validateUpdate = function (userId, modifier, doc) {
@@ -41,11 +41,11 @@ if(Meteor.isServer){
             if (isGoodString(modifier.$set.name)) {
               return true;
             } else {
-              return false;
+              throw new Meteor.Error("Tasks can't be blank!");
             }
           }
         } else {
-          return false;
+          throw new Meteor.Error("You must provide a valid Task Identifier!");
         }
       } else {
         return true;
@@ -66,7 +66,7 @@ if(Meteor.isServer){
       return Tasks.validateUpdate(userId, modifier, doc);
     },
     remove: function (userId, doc) {
-      return false;
+      throw new Meteor.Error("This function is disabled!");
     }
   });
 

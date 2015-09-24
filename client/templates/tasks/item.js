@@ -11,7 +11,7 @@ Template.taskItem.helpers({
 
 Template.taskItem.events({
   "click .delete-button": function () {
-    Tasks.remove(this._id);
+    Tasks.remove(this._id, Template.handleTaskErrors);
     return false;
   },
   "click .task-item": function () {

@@ -8,9 +8,9 @@ Template.newTask.events({
     Session.set('selectedTask', null);
 
     if (task._id) {
-      Tasks.update(task._id, {$set: {name: task.name}});
+      Tasks.update(task._id, {$set: {name: task.name}}, Template.handleTaskErrors);
     } else {
-      Tasks.insert(task);
+      Tasks.insert(task, Template.handleTaskErrors);
     }
 
     event.target.text.value = "";
