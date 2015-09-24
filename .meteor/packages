@@ -18,7 +18,8 @@ ecmascript              # Enable ECMAScript2015+ syntax in app code
 
 autopublish             # Publish all data to the clients (for prototyping)
 less
-accounts-ui
 accounts-password
 accounts-facebook
 chrismbeckett:toastr
+twbs:bootstrap
+ian:accounts-ui-bootstrap-3

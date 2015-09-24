@@ -23,6 +23,26 @@ body {
 
   background: @dark linear-gradient(to bottom, @dark, @light 100%) fixed;
 
+  .navbar {
+    background-color: lighten(@highlight, 8%);
+
+    .photo {
+      padding-right: 6px;
+      color: @dark;
+
+      img {
+        height: 40px;
+        border: 3px solid darken(@midtone, 10%);
+        border-radius: 100px;
+        -webkit-border-radius: 100px;
+        -moz-border-radius: 100px;
+        margin-top: 5px;
+        margin-right: -10px;
+      }
+
+    }
+  }
+
   .tasks {
     position: relative;
 
@@ -113,34 +133,6 @@ body {
       }
     }
 
-  }
-
-  .login-control {
-    position: absolute;
-    display: inline-flex;
-    right: 2px;
-    top: 2px;
-
-    .photo {
-      padding-right: 6px;
-      color: @dark;
-
-      img {
-        height: 25px;
-        border: 3px solid darken(@midtone, 10%);
-        border-radius: 100px;
-        -webkit-border-radius: 100px;
-        -moz-border-radius: 100px;
-      }
-    }
-
-    #login-buttons {
-      margin-top: 9px;
-      margin-right: 12px;
-      a {
-        text-decoration: none;
-      }
-    }
   }
 
 }

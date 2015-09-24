@@ -1,0 +1,35 @@
+<template name="navBar">
+  <div class="navbar navbar-default" role="navigation">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">Task Master</a>
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    </div>
+    <div class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li class=""><a href="#">About</a></li>
+      </ul>
+      <ul class="nav navbar-nav">
+        <li class="active"><a href="#">Tasks</a></li>
+      </ul>
+      {{> meteorLoginButtons}}
+    </div>
+  </div>
+</template>
+
+<template name="meteorLoginButtons">
+  <ul class="nav navbar-nav navbar-right">
+    {{> loginButtons}}
+  </ul>
+  {{#if photoUrl}}
+    <ul class="nav navbar-nav navbar-right">
+      <div class="photo">
+        <img src="{{photoUrl}}"/>
+      </div>
+    </ul>
+  {{/if}}
+</template>
