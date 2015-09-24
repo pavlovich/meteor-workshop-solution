@@ -27,3 +27,6 @@ ejson
 iron:router
 zimme:active-route
 
+angular
+urigo:angular-blaze-template
+angularui:angular-ui-router

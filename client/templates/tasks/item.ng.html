@@ -1,0 +1,6 @@
+<li ng-click="vm.selectTask()"
+    ng-class="['task-item', {'can-update': vm.canUpdate(), 'selected-task': vm.isSelected()}]">
+  {{vm.task.name}}
+  <span class="email" ng-if="vm.task.email">{{vm.task.email}}</span>
+  <button class="delete-button" ng-if="vm.canDelete()" ng-click="vm.deleteTask()">&times;</button>
+</li>
