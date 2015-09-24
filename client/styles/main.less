@@ -62,5 +62,20 @@ body {
       background-color: @element-background;
       border-bottom: @standard-separator 1px;
     }
+
+    .new-task {
+      input {
+        box-sizing: border-box;
+        background: transparent;
+        width: 100%;
+        padding: 10px;
+        font-size: 14px;
+
+        &:focus {
+          background-color: @highlight;
+        }
+      }
+    }
+
   }
 }
