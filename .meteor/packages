@@ -23,3 +23,7 @@ accounts-facebook
 chrismbeckett:toastr
 twbs:bootstrap
 ian:accounts-ui-bootstrap-3
+ejson
+iron:router
+zimme:active-route
+
