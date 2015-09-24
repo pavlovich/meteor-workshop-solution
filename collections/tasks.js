@@ -33,21 +33,25 @@ if(Meteor.isServer){
           task = null;
         }
         if (task) {
-          // Cannot update the _id property, so remove it if it is in the 'change set'.
-          delete modifier.$set._id;
-          if (_.isNull(modifier.$set.name) || modifier.$set.name == undefined) {
-            return true;
-          } else {
-            if (isGoodString(modifier.$set.name)) {
+          if (!task.owner || (task.owner == userId)) {
+            // Cannot update the _id property, so remove it if it is in the 'change set'.
+            delete modifier.$set._id;
+            if(_.isNull(modifier.$set.name) || modifier.$set.name == undefined) {
               return true;
-            } else {
-              throw new Meteor.Error("Tasks can't be blank!");
+            }else {
+              if (isGoodString(modifier.$set.name)) {
+                return true;
+              } else {
+                throw new Meteor.Error("Tasks can't be blank!");
+              }
             }
+          } else {
+            throw new Meteor.Error("You can only update your own tasks!")
           }
-        } else {
+        }else {
           throw new Meteor.Error("You must provide a valid Task Identifier!");
         }
-      } else {
+      }else{
         return true;
       }
     }
