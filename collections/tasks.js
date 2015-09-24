@@ -6,15 +6,21 @@ if (Meteor.isClient) {
 
 if (Meteor.isServer) {
 
-  Meteor.publish("tasks", function () {
-    return Tasks.find(
-      {
-        $or: [
-          {private: {$ne: true}},
-          {owner: this.userId}
-        ]
-      }
-    );
+  Meteor.publish("tasks", function (includeCompleted) {
+    var include = includeCompleted ? 'placeholder' : true;
+    return Tasks.find({
+      $and: [
+        {
+          $or: [
+            {private: {$ne: true}},
+            {owner: this.userId}
+          ]
+        },
+        {
+          checked: {$ne: include}
+        }
+      ]
+    });
   });
 
   var isLoggedInUser = function (id) {
