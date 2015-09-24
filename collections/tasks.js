@@ -26,7 +26,7 @@ if(Meteor.isServer){
   Tasks.validateUpdate = function (userId, modifier, doc) {
     if (isLoggedInUser(userId)) {
       if (modifier && modifier.$set) {
-        var task = doc;
+        var task = doc || modifier.$set;
         if (task && task._id) {
           task = Tasks.findOne(task._id);
         } else {

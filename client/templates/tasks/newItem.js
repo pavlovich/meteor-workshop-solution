@@ -8,10 +8,14 @@ Template.newTask.events({
     Session.set('selectedTask', null);
 
     if (task._id) {
-      Tasks.update(task._id, {$set: {name: task.name}}, Template.handleTaskErrors);
+      //Tasks.update(task._id, {$set: {name: task.name}}, Template.handleTaskErrors);
+      Meteor.call('updateTask', task, Template.handleTaskErrors);
     } else {
-      Tasks.insert(task, Template.handleTaskErrors);
+      //Tasks.insert(task, Template.handleTaskErrors);
+      Meteor.call('addTask', task, Template.handleTaskErrors);
     }
+
+    // Meteor.call('upsertTask', task, Template.handleTaskErrors);
 
     event.target.text.value = "";
 

@@ -11,7 +11,8 @@ Template.taskItem.helpers({
 
 Template.taskItem.events({
   "click .delete-button": function () {
-    Tasks.remove(this._id, Template.handleTaskErrors);
+    //Tasks.remove(this._id, Template.handleTaskErrors);
+    Meteor.call('deleteTask', this, Template.handleTaskErrors);
     return false;
   },
   "click .task-item": function () {
