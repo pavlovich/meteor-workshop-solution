@@ -62,6 +62,12 @@ body {
       background-color: @element-background;
       border-bottom: @standard-separator 1px;
 
+      cursor: pointer;
+
+      &.selected-task {
+        background-color: @selected !important;
+      }
+
       .delete-button {
         position: relative;
         margin-top: -4px;

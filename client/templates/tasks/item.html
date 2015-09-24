@@ -1,5 +1,5 @@
 <template name="taskItem">
-  <li class="task-item">
+  <li class="task-item {{#if selected}}selected-task{{/if}}">
     {{name}}
     <button class="delete-button">&times;</button>
   </li>
