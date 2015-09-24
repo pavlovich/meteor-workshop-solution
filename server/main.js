@@ -13,8 +13,6 @@ var getEmail = function () {
   return null;
 };
 
-// Add to insert and upsert logic: task.email = getEmail();
-
 Meteor.methods({
   addTask: function (task) {
     task.email = getEmail();
@@ -36,10 +34,10 @@ Meteor.methods({
     if (id) {
       Tasks.validateUpdate(Meteor.userId(), {$set: task});
     } else {
+      task.email = getEmail();
+      task.owner = Meteor.userId();
       Tasks.validateInsert(Meteor.userId(), task);
     }
-    task.email = getEmail();
-    task.owner = Meteor.userId();
     Tasks.upsert(id, task);
   }
 });
