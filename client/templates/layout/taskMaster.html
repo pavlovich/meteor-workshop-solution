@@ -1,4 +1,6 @@
-<template name="taskMaster">
-  {{> navBar}}
-  {{> yield}}
+<template name="defaultLayout">
+  {{#if usingSpacebars}}
+    {{> navBar}}
+    {{> yield}}
+  {{/if}}
 </template>
